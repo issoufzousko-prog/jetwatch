@@ -79,16 +79,26 @@ app.add_middleware(SessionMiddleware, secret_key=os.getenv("SESSION_SECRET", "su
 # Routes exemptées du PoW (bootstrap nécessaire pour obtenir un challenge)
 _POW_EXEMPT_PREFIXES = [
     "/pow/challenge",
+    "/api/pow/challenge",
     "/ecdh/handshake",
+    "/api/ecdh/handshake",
     "/health",
+    "/api/health",
     "/auth/",
     "/api/auth/",
+    "/users",
     "/api/users",
     "/proxy-image",
+    "/api/proxy-image",
     "/pays",
+    "/api/pays",
     "/docs",
+    "/api/docs",
     "/openapi",
+    "/api/openapi",
     "/redoc",
+    "/api/redoc",
+    "/", # Exempt root just in case Vercel routes root to backend during build/errors
 ]
 
 class ECPoWMiddleware(BaseHTTPMiddleware):
