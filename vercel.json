@@ -4,31 +4,8 @@
   "outputDirectory": "frontend/dist",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index.py"
-    },
-    {
-      "source": "/pow/(.*)",
-      "destination": "/api/index.py"
-    },
-    {
-      "source": "/ecdh/(.*)",
-      "destination": "/api/index.py"
-    },
-    {
-      "source": "/proxy-image",
-      "destination": "/api/index.py"
-    },
-    {
       "source": "/(.*)",
       "destination": "/index.html"
-    }
-  ],
-
-  "crons": [
-    {
-      "path": "/api/cron/poll",
-      "schedule": "0 0 * * *"
     }
   ]
 }
