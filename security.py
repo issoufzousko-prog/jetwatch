@@ -5,7 +5,11 @@ from cryptography.hazmat.primitives.asymmetric import ec
 from cryptography.hazmat.primitives import serialization
 
 # Clé privée sur Courbe Elliptique (ECC P-256) pour la sécurité réseau anti-falsification
-ECC_KEY_FILE = os.path.join(os.path.dirname(__file__), "ecc_private_key.pem")
+# Vercel n'autorise l'écriture que dans /tmp
+if os.environ.get("VERCEL") or os.environ.get("AWS_EXECUTION_ENV"):
+    ECC_KEY_FILE = "/tmp/ecc_private_key.pem"
+else:
+    ECC_KEY_FILE = os.path.join(os.path.dirname(__file__), "ecc_private_key.pem")
 
 if os.path.exists(ECC_KEY_FILE):
     with open(ECC_KEY_FILE, "rb") as f:
